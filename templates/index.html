@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crypto Trading Terminal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="chat-container">
+  <h2>Crypto Trading Terminal</h2>
+  <div class="messages" id="messages">
+    {% for m in messages %}
+      <div class="message {{ m.role }}">{{ m.content|safe }}</div>
+    {% endfor %}
+  </div>
+  <form action="/chat" method="post">
+    <input type="text" name="message" autocomplete="off" autofocus>
+    <button type="submit">Send</button>
+  </form>
+</div>
+<script>
+  const msgBox = document.getElementById('messages');
+  msgBox.scrollTop = msgBox.scrollHeight;
+</script>
+</body>
+</html>
